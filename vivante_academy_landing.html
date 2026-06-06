@@ -1,0 +1,439 @@
+
+<h2 class="sr-only">Vivante Import Academy landing page demo showing hero, course modules, and pricing sections</h2>
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font-sans); }
+
+.va-hero {
+  background: #6a1fa0;
+  padding: 64px 40px 72px;
+  text-align: center;
+  position: relative;
+}
+.va-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  color: #f0d9ff;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 5px 14px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.va-hero h1 {
+  font-size: 36px;
+  font-weight: 500;
+  color: #fff;
+  line-height: 1.25;
+  max-width: 560px;
+  margin: 0 auto 16px;
+}
+.va-hero h1 span {
+  color: #d4a8ff;
+}
+.va-hero p {
+  font-size: 16px;
+  color: rgba(255,255,255,0.7);
+  max-width: 440px;
+  margin: 0 auto 32px;
+  line-height: 1.6;
+}
+.va-hero-btns {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.va-btn-primary {
+  background: #fff;
+  color: #6a1fa0;
+  border: none;
+  padding: 13px 28px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.va-btn-primary:hover { opacity: 0.9; }
+.va-btn-outline {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.4);
+  padding: 13px 28px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.va-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  background: #fff;
+  border-bottom: 0.5px solid var(--color-border-tertiary);
+}
+.va-stat {
+  padding: 24px 20px;
+  text-align: center;
+  border-right: 0.5px solid var(--color-border-tertiary);
+}
+.va-stat:last-child { border-right: none; }
+.va-stat-num {
+  font-size: 22px;
+  font-weight: 500;
+  color: #6a1fa0;
+  margin-bottom: 4px;
+}
+.va-stat-label {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
+
+.va-section {
+  padding: 48px 40px;
+  background: var(--color-background-primary);
+}
+.va-section-alt {
+  padding: 48px 40px;
+  background: var(--color-background-secondary);
+}
+.va-section-title {
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-bottom: 8px;
+}
+.va-section-sub {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+
+.va-about {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 20px;
+  align-items: start;
+  background: var(--color-background-primary);
+  border: 0.5px solid var(--color-border-tertiary);
+  border-radius: var(--border-radius-lg);
+  padding: 24px;
+  margin-bottom: 24px;
+}
+.va-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #e8d0ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 500;
+  color: #6a1fa0;
+  flex-shrink: 0;
+}
+.va-about-name {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-bottom: 4px;
+}
+.va-about-title {
+  font-size: 12px;
+  color: #6a1fa0;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+.va-about-bio {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+.va-creds {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+.va-cred {
+  background: #f3e8ff;
+  color: #6a1fa0;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: var(--border-radius-md);
+}
+
+.va-modules {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.va-module {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--color-background-primary);
+  border: 0.5px solid var(--color-border-tertiary);
+  border-radius: var(--border-radius-md);
+  padding: 16px 18px;
+}
+.va-module-num {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #e8d0ff;
+  color: #6a1fa0;
+  font-size: 13px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.va-module-info { flex: 1; }
+.va-module-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-bottom: 2px;
+}
+.va-module-desc {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
+.va-lock {
+  font-size: 16px;
+  color: var(--color-text-secondary);
+}
+.va-module:first-child .va-module-num { background: #6a1fa0; color: #fff; }
+.va-module:first-child .va-lock { color: #6a1fa0; }
+
+.va-pricing-card {
+  background: var(--color-background-primary);
+  border: 0.5px solid var(--color-border-tertiary);
+  border-radius: var(--border-radius-lg);
+  padding: 32px;
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+.va-popular {
+  display: inline-block;
+  background: #6a1fa0;
+  color: #fff;
+  font-size: 11px;
+  padding: 3px 12px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+}
+.va-price {
+  font-size: 36px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-bottom: 4px;
+}
+.va-price span {
+  font-size: 16px;
+  color: var(--color-text-secondary);
+  font-weight: 400;
+}
+.va-price-label {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  margin-bottom: 24px;
+}
+.va-features {
+  list-style: none;
+  text-align: left;
+  margin-bottom: 28px;
+}
+.va-features li {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  padding: 7px 0;
+  border-bottom: 0.5px solid var(--color-border-tertiary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.va-features li:last-child { border-bottom: none; }
+.va-check { color: #6a1fa0; font-size: 16px; }
+.va-enroll-btn {
+  width: 100%;
+  background: #6a1fa0;
+  color: #fff;
+  border: none;
+  padding: 14px;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.va-enroll-btn:hover { opacity: 0.9; }
+.va-guarantee {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  margin-top: 14px;
+}
+
+.va-footer {
+  background: #3d1060;
+  padding: 32px 40px;
+  text-align: center;
+}
+.va-footer-logo {
+  font-size: 18px;
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 8px;
+}
+.va-footer-tag {
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+}
+</style>
+
+<div class="va-hero">
+  <div class="va-badge">Vivante Import Academy</div>
+  <h1>Master the <span>importation business</span> from scratch</h1>
+  <p>Learn exactly how to source, import, and sell quality products profitably — from someone who has done it for 11 years.</p>
+  <div class="va-hero-btns">
+    <button class="va-btn-primary" onclick="sendPrompt('Show me the full course curriculum')">Enroll now — ₦100,000</button>
+    <button class="va-btn-outline">Preview the course</button>
+  </div>
+</div>
+
+<div class="va-stats">
+  <div class="va-stat">
+    <div class="va-stat-num">8</div>
+    <div class="va-stat-label">Course modules</div>
+  </div>
+  <div class="va-stat">
+    <div class="va-stat-num">11yrs</div>
+    <div class="va-stat-label">Mentor experience</div>
+  </div>
+  <div class="va-stat">
+    <div class="va-stat-num">Lifetime</div>
+    <div class="va-stat-label">Access</div>
+  </div>
+</div>
+
+<div class="va-section">
+  <div class="va-section-title">Meet your mentor</div>
+  <div class="va-section-sub">Learn from someone who built multiple businesses over 11 years.</div>
+  <div class="va-about">
+    <div class="va-avatar">VA</div>
+    <div>
+      <div class="va-about-name">Vivante</div>
+      <div class="va-about-title">Serial entrepreneur · Importation expert</div>
+      <div class="va-about-bio">11 years building importation businesses from the ground up. Multiple successful product lines. Now teaching other women how to do the same — with no gatekeeping.</div>
+      <div class="va-creds">
+        <span class="va-cred">11 years experience</span>
+        <span class="va-cred">Multiple businesses</span>
+        <span class="va-cred">Proven results</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="va-section-alt">
+  <div class="va-section-title">What you'll learn</div>
+  <div class="va-section-sub">8 modules covering everything from finding suppliers to making your first sale.</div>
+  <div class="va-modules">
+    <div class="va-module">
+      <div class="va-module-num">1</div>
+      <div class="va-module-info">
+        <div class="va-module-title">Introduction to importation</div>
+        <div class="va-module-desc">The business model, opportunities, and mindset</div>
+      </div>
+      <i class="ti ti-player-play va-lock" aria-hidden="true"></i>
+    </div>
+    <div class="va-module">
+      <div class="va-module-num">2</div>
+      <div class="va-module-info">
+        <div class="va-module-title">Finding the right products</div>
+        <div class="va-module-desc">How to identify profitable products to import</div>
+      </div>
+      <i class="ti ti-lock va-lock" aria-hidden="true"></i>
+    </div>
+    <div class="va-module">
+      <div class="va-module-num">3</div>
+      <div class="va-module-info">
+        <div class="va-module-title">Sourcing from suppliers</div>
+        <div class="va-module-desc">Alibaba, agents, and trusted supplier networks</div>
+      </div>
+      <i class="ti ti-lock va-lock" aria-hidden="true"></i>
+    </div>
+    <div class="va-module">
+      <div class="va-module-num">4</div>
+      <div class="va-module-info">
+        <div class="va-module-title">Shipping and logistics</div>
+        <div class="va-module-desc">Sea vs air freight, clearing agents, duties</div>
+      </div>
+      <i class="ti ti-lock va-lock" aria-hidden="true"></i>
+    </div>
+    <div class="va-module">
+      <div class="va-module-num">5</div>
+      <div class="va-module-info">
+        <div class="va-module-title">Customs and documentation</div>
+        <div class="va-module-desc">Everything you need to clear your goods legally</div>
+      </div>
+      <i class="ti ti-lock va-lock" aria-hidden="true"></i>
+    </div>
+    <div class="va-module">
+      <div class="va-module-num">6</div>
+      <div class="va-module-info">
+        <div class="va-module-title">Pricing and profit margins</div>
+        <div class="va-module-desc">How to price for profit and stay competitive</div>
+      </div>
+      <i class="ti ti-lock va-lock" aria-hidden="true"></i>
+    </div>
+    <div class="va-module">
+      <div class="va-module-num">7</div>
+      <div class="va-module-info">
+        <div class="va-module-title">Selling your products</div>
+        <div class="va-module-desc">Online, offline, and social media strategies</div>
+      </div>
+      <i class="ti ti-lock va-lock" aria-hidden="true"></i>
+    </div>
+    <div class="va-module">
+      <div class="va-module-num">8</div>
+      <div class="va-module-info">
+        <div class="va-module-title">Scaling your importation business</div>
+        <div class="va-module-desc">Systems, reinvestment, and long-term growth</div>
+      </div>
+      <i class="ti ti-lock va-lock" aria-hidden="true"></i>
+    </div>
+  </div>
+</div>
+
+<div class="va-section">
+  <div class="va-section-title">Simple pricing</div>
+  <div class="va-section-sub">One payment. Lifetime access. No subscriptions.</div>
+  <div class="va-pricing-card">
+    <div class="va-popular">One-time payment</div>
+    <div class="va-price">₦100,000 <span></span></div>
+    <div class="va-price-label">Lifetime access · All 8 modules</div>
+    <ul class="va-features">
+      <li><i class="ti ti-check va-check" aria-hidden="true"></i> Full access to all 8 modules</li>
+      <li><i class="ti ti-check va-check" aria-hidden="true"></i> Lifetime access — no expiry</li>
+      <li><i class="ti ti-check va-check" aria-hidden="true"></i> Future updates included</li>
+      <li><i class="ti ti-check va-check" aria-hidden="true"></i> Community access</li>
+      <li><i class="ti ti-check va-check" aria-hidden="true"></i> Certificate of completion</li>
+    </ul>
+    <button class="va-enroll-btn">Enroll now</button>
+    <div class="va-guarantee">Secure payment via Paystack</div>
+  </div>
+</div>
+
+<div class="va-footer">
+  <div class="va-footer-logo">Vivante Import Academy</div>
+  <div class="va-footer-tag">Built for women who mean business.</div>
+</div>
